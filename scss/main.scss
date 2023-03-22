@@ -1,0 +1,204 @@
+@import "_config";
+
+@mixin flexCenter($direction){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin fontProporties($clr, $fs, $fw, $lh, $ls){
+    color: $clr;
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    letter-spacing: $ls;
+}
+
+@mixin maxHight($hight){
+    height: 100%;
+    max-height: $hight;
+}
+
+@mixin maxWidth($width){
+    width: 100%;
+    max-width: $width;
+}
+
+@mixin desktop{
+    @media(min-width: 1024px){
+        @content;
+    }
+}
+
+@mixin FormInputProp{
+    width: 100%;
+    min-height: 5.6rem;
+    padding: 0 2rem;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+body{
+    background-image: url("../../images/bg-intro-mobile.png");
+    @include flexCenter(column);
+
+    @include desktop{
+        background-image: url("../../images/bg-intro-desktop.png");
+    }
+}
+.main{
+    @include flexCenter(column);
+    @include maxWidth(50rem);
+    min-height: 100vh;
+    gap: 6.4rem;
+    padding: 8.8rem 2.4rem 6.8rem 2.4rem;
+
+    @include desktop{
+        flex-direction: row;
+        gap: 4.5rem;
+        @include maxWidth(initial);
+        padding: 8.8rem 16.5rem 6.8rem 16.5rem;
+    }
+
+    #{&}__introduction{
+        text-align: center;
+
+        @include desktop{
+            width: 50%;
+            text-align: left;
+        }
+
+        .introduction__title{
+            @include fontProporties(inherit, map-get($fs-mobile, fs-xl ), $fw-bold, 3.6rem, -0.03rem);
+            margin-bottom: 2.4rem;
+            
+            @include desktop{
+                @include fontProporties(inherit, map-get($fs, fs-xl ), $fw-bold, 5.5rem, -0.05rem); 
+            }
+        }
+        .introduction__info{
+            @include fontProporties(inherit, map-get($fs, fs-l ), $fw-medium, 2.6rem, initial);
+        }
+    }
+
+    #{&}__form-section{
+
+        @include desktop{
+            width: 50%;
+        }
+
+        .form-section__offer{
+            padding: 1.8rem 0.5rem;
+            text-align: center;
+            @include flexCenter(column);
+            margin-bottom: 2.4rem;
+            background-color: map-get($clr-map , accent-700 );
+            border-radius: 1rem;
+            box-shadow: 0rem 0.8rem rgba(0, 0, 0, 0.1469);
+            @include fontProporties(inherit, map-get($fs, fs-m ), $fw-regular, 2.6rem, 0.03rem);
+
+            
+            p{
+                @include maxWidth(19.4rem);
+
+                @include desktop{
+                    @include maxWidth(initial);
+                }
+            } 
+
+            span{
+                font-weight: $fw-bold;
+            }
+        }
+
+        .form-section__form{
+            background-color: map-get($clr-map, neutral-1000 );
+            padding: 2.4rem;
+            @include flexCenter(column);
+            gap: 1.6rem;
+            border-radius: 1rem;
+            box-shadow: 0px 8px 0px 0px rgba(0, 0, 0, 0.15);
+
+            @include desktop{
+                padding: 4rem;
+            }
+
+            .form__invalid-input-error{
+                @include fontProporties(map-get($clr-map, primary), map-get($fs, fs-xs ), $fw-medium, 1.65rem, initial);
+                width: 100%;
+                text-align: right;
+                margin-top: -1rem;
+                margin-bottom: 1.9rem;
+                font-style: italic;
+            }
+
+            #invalid-fName{
+                display: none;
+            }
+            #invalid-lName{
+                display: none;
+            }
+            #invalid-eMail{
+                display: none;
+            }
+            #invalid-password{
+                display: none;
+            }
+
+            .form__input-invalid{
+                @include FormInputProp();
+                @include fontProporties(map-get($clr-map, primary), map-get($fs, fs-s ), $fw-semi-bold, 2.6rem, 0.025rem);
+                border: 0.2rem solid map-get($clr-map, primary );
+                opacity: 1;
+                background-image: url("../../images/icon-error.svg");
+                background-repeat: no-repeat;
+                background-position: center right 2.7rem;
+            }
+
+            .form__input{
+                @include FormInputProp();
+                @include fontProporties(map-get($clr-map, neutral-200), map-get($fs, fs-s ), $fw-semi-bold, 2.6rem, 0.025rem);
+                border: 0.1rem solid rgba(222, 222, 222, 1);
+                opacity: 75%;
+                background-image: none;
+            }
+
+            .form__input:hover{
+                border: 1px solid rgba(94, 84, 164, 1);
+            }
+
+            .form__input:focus{
+                opacity: 1;
+            }
+
+            .form__submit-btn{
+                background-color: map-get($clr-map, accent-400 );
+                width: 100%;
+                border-radius: 0.5rem;
+                text-transform: uppercase;
+                min-height: 5.6rem;
+                @include flexCenter(column);
+                @include fontProporties(inherit, map-get($fs, fs-m ), $fw-semi-bold, 2.6rem, 0.1rem);
+                box-shadow: 0rem -0.4rem 0rem 0rem rgba(0, 0, 0, 0.09) inset;
+                margin-bottom: -0.8rem;
+            }
+
+            .form__submit-btn:hover{
+                background-color: map-get($clr-map, accent-300 );
+            }
+
+            .form__terms-and-sevices{
+                text-align: center;
+                margin: 0 calc(3.9rem - 2.4rem);
+                @include fontProporties(map-get($clr-map, neutral-700), map-get($fs, fs-xs ), $fw-bold, 2.1rem, initial);
+
+                span a{
+                    font-weight: $fw-bold;
+                    color: map-get($clr-map, primary );
+                }
+
+            }
+        }
+    }
+}
