@@ -210,6 +210,18 @@ body {
 .main .main__form-section .form-section__form .form__input:focus {
   opacity: 1;
 }
+.main .main__form-section .form-section__form .form__input-invalid::-moz-placeholder {
+  color: rgb(255, 121, 121);
+}
+.main .main__form-section .form-section__form .form__input-invalid::placeholder {
+  color: rgb(255, 121, 121);
+}
+.main .main__form-section .form-section__form .form__input::-moz-placeholder {
+  color: rgb(61, 59, 72);
+}
+.main .main__form-section .form-section__form .form__input::placeholder {
+  color: rgb(61, 59, 72);
+}
 .main .main__form-section .form-section__form .form__submit-btn {
   background-color: rgb(56, 204, 139);
   width: 100%;

@@ -7,6 +7,7 @@ let password = document.getElementById("password");
 
   if(fName.value === "" || fName.value.length <= 1 || fName.value.length > 20){
     fName.classList.remove("form__input");
+    fName.classList.remove("form__input::placeholder");
     document.getElementById("invalid-fName").style.display = "block";
     document.getElementById("invalid-fName").textContent = "Invalid first name";
   }
@@ -16,6 +17,7 @@ let password = document.getElementById("password");
 
   if(lName.value === "" || lName.value.length <= 1 || lName.value.length > 20){
     lName.classList.remove("form__input");
+    lName.classList.remove("form__input::placeholder");
     document.getElementById("invalid-lName").style.display = "block";
     document.getElementById("invalid-lName").textContent = "Invalid last name";
   }
@@ -25,6 +27,7 @@ let password = document.getElementById("password");
 
   if(eMail.value === "" || eMail.value.length <= 4 || eMail.value.length > 30 || eMail.value.includes("@") == false || eMail.value.includes(".") == false){
     eMail.classList.remove("form__input");
+    eMail.classList.remove("form__input::placeholder");
     document.getElementById("invalid-eMail").style.display = "block";
     document.getElementById("invalid-eMail").textContent = "Invalid Email";
   }
@@ -34,6 +37,7 @@ let password = document.getElementById("password");
 
   if(password.value === "" || password.value.length < 8 || password.value.length > 16){
     password.classList.remove("form__input");
+    password.classList.remove("form__input::placeholder");
     document.getElementById("invalid-password").style.display = "block";
     document.getElementById("invalid-password").textContent = "Invalid pasword";
   }
@@ -44,6 +48,7 @@ let password = document.getElementById("password");
 
 function resetInput(input, error){
   input.classList.add("form__input");
+  input.classList.add("form__input::placeholder");
   error.style.display = "none";
 }
 

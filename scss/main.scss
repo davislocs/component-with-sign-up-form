@@ -172,6 +172,14 @@ body{
                 opacity: 1;
             }
 
+            .form__input-invalid::placeholder{
+                color: map-get($clr-map, primary );
+            }
+
+            .form__input::placeholder{
+                color: map-get($clr-map, neutral-200 );
+            }
+            
             .form__submit-btn{
                 background-color: map-get($clr-map, accent-400 );
                 width: 100%;
